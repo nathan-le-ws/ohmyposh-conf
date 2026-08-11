@@ -1,0 +1,90 @@
+console_title_template = '{{ .Shell }} in {{ .Folder }}'
+version = 4
+final_space = true
+
+[[blocks]]
+type = 'prompt'
+alignment = 'left'
+newline = true
+
+[[blocks.segments]]
+type = 'os'
+style = 'plain'
+background = 'transparent'
+foreground = '#E06C75'
+template = '{{ .Icon }} '
+
+[[blocks.segments]]
+type = 'session'
+style = 'powerline'
+background = 'transparent'
+foreground = 'white'
+template = "{{ .UserName }}@"
+
+[[blocks.segments]]
+type = 'session'
+style = 'powerline'
+background = 'transparent'
+foreground = '#CC241D'
+template = "{{ .HostName }} "
+
+[[blocks.segments]]
+type = 'path'
+style = 'powerline'
+background = 'transparent'
+foreground = '#61AFEF'
+template = "{{ .Path }} "
+
+[blocks.segments.properties]
+style = 'full'
+
+[[blocks.segments]]
+type = 'git'
+style = 'plain'
+background = 'transparent'
+foreground = '#98C379'
+foreground_templates = ['{{ if or (.Working.Changed) (.Staging.Changed) }}#E5C07B{{ end }}']
+template = '{{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }} <cyan>{{ if gt .Behind 0 }}⇣{{ end }}{{ if gt .Ahead 0 }}⇡{{ end }}</>'
+
+[blocks.segments.properties]
+branch_icon = ''
+commit_icon = '@'
+fetch_status = true
+
+[[blocks]]
+type = 'rprompt'
+overflow = 'hidden'
+
+[[blocks.segments]]
+type = 'executiontime'
+style = 'plain'
+foreground = '#E5C07B'
+background = 'transparent'
+template = '{{ .FormattedMs }}'
+
+[blocks.segments.properties]
+threshold = 100
+
+[[blocks]]
+type = 'prompt'
+alignment = 'left'
+newline = true
+
+[[blocks.segments]]
+type = 'text'
+style = 'plain'
+background = 'transparent'
+foreground_templates = ['{{ if gt .Code 0 }}#E06C75{{ else }}#98C379{{ end }}']
+template = '$'
+
+[transient_prompt]
+background = 'transparent'
+foreground_templates = ['{{ if gt .Code 0 }}#E06C75{{ else }}#98C379{{ end }}']
+template = '#'
+
+[secondary_prompt]
+foreground = '#61AFEF'
+background = 'transparent'
+multiline_keepprompt = true
+template = '$$ '
+
