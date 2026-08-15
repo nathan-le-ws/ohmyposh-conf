@@ -75,7 +75,7 @@ type = 'text'
 style = 'plain'
 background = 'transparent'
 foreground_templates = ['{{ if gt .Code 0 }}#E06C75{{ else }}#98C379{{ end }}']
-template = '$'
+template = '%'
 
 [transient_prompt]
 background = 'transparent'
@@ -86,5 +86,5 @@ template = '#'
 foreground = '#61AFEF'
 background = 'transparent'
 multiline_keepprompt = true
-template = '$$ '
+template = '%% '
 
